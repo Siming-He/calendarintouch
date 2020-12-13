@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start: 2020-12-11 00:19:55
+  end: 2020-12-11 00:19:55
+  done: false
+  task: one
+
+two:
+  name: MyString
+  start: 2020-12-11 00:19:55
+  end: 2020-12-11 00:19:55
+  done: false
+  task: two
