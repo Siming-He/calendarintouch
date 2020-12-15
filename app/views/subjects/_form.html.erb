@@ -9,6 +9,10 @@
     <%= f.input :description %>
   </div>
 
+  <div class="form-inputs">
+      <%= f.input :private, label: 'set private' %>
+  </div>
+
   <h3>Tasks</h3>
 
   <table class='table'>
@@ -17,7 +21,6 @@
         <th></th>
         <th>Task Name</th>
         <th>Due Date</th>
-        <th>Description</th>
         <th>Workload(hr)</th>
       </tr>
     </thead>

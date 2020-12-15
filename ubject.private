@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /CIS-196/final-project/calender/app/views/subjects/index.html.erb:18 ActionView::CompiledTemplates#_app_views_subjects_index_html_erb__4584826260911545107_27280:
+
+    [1;34m13[0m:     </tr>
+    [1;34m14[0m:   </thead>
+    [1;34m15[0m: 
+    [1;34m16[0m:   <tbody>
+    [1;34m17[0m:     <% @subjects.each do |subject| %>
+ => [1;34m18[0m:       <% binding.pry %>
+    [1;34m19[0m:       <% if !subject.private %>
+    [1;34m20[0m:         <% if current_user.email = subject.owneremail %>
+    [1;34m21[0m:           <tr>
+    [1;34m22[0m:             <td><%= subject.name %></td>
+    [1;34m23[0m:             <td><%= subject.description %></td>
+

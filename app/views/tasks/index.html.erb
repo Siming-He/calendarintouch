@@ -19,10 +19,10 @@
         <td><%= task.name %></td>
         <td><%= task.duedate %></td>
         <td><%= task.description %></td>
-        <td><%= task.subject %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= task.subject.name %></td>
+        <td><%= link_to 'Show Subject', [@subject] %></td>
+        <td><%= link_to 'Edit Task', edit_subject_task_path(@subject, task) %></td>
+        <td><%= link_to 'Destroy Task', [@subject, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_subject_task_path(@subject) %>

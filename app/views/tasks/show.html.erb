@@ -20,5 +20,7 @@
   <%= @task.subject %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_subject_task_path(@subject, @task) %> |
+<%= link_to 'Back', subject_path(@subject) %>
+
+

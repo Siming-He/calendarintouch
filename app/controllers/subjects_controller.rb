@@ -27,9 +27,13 @@ class SubjectsController < ApplicationController
   # POST /subjects.json
   def create
     @subject = Subject.new(subject_params)
-
+    @subject.owneremail = current_user.email
+    if @subject.private == nil
+      @subject.private = false
+    end
     respond_to do |format|
       if @subject.save
+        @subject.user_add = current_user
         format.html { redirect_to edit_subject_path(@subject), notice: 'Subject was successfully created.' }
         format.json { render :edit, status: :created, location: @subject }
       else
@@ -71,6 +75,6 @@ class SubjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subject_params
-      params.require(:subject).permit(:name, :description, tasks_attributes: Task.attribute_names.map(&:to_sym).push(:_destroy))
+      params.require(:subject).permit(:name, :description, :private, tasks_attributes: Task.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end

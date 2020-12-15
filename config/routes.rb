@@ -1,13 +1,26 @@
 Rails.application.routes.draw do
-  get 'page/home'
-  
-  resources :stages
+  resources :events
   resources :tasks
   resources :subjects
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
-    #:omniauth_callbacks => "callbacks" }
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'page#home'
+  get '/calendar', to: 'calendar#show'
+
+  resources :users do
+    resources :subjects, only: [:create, :destroy]
+  end
+
+  resources :subjects do
+    resources :tasks
+  end
+
+  resources :tasks do
+    resources :events
+  end
+
+  get 'add_subject/:user_id/:subject_id', to: 'registration#add_subject'
+  get 'drop_subject/:user_id/:subject_id', to: 'registration#drop_subject'
 
 end

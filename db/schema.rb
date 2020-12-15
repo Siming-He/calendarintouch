@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_160050) do
+ActiveRecord::Schema.define(version: 2020_12_15_131029) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.datetime "start"
+    t.datetime "end"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "task_id"
+    t.index ["task_id"], name: "index_events_on_task_id"
+  end
 
   create_table "registrations", force: :cascade do |t|
     t.integer "subject_id"
@@ -21,22 +32,13 @@ ActiveRecord::Schema.define(version: 2020_12_13_160050) do
     t.index ["user_id"], name: "index_registrations_on_user_id"
   end
 
-  create_table "stages", force: :cascade do |t|
-    t.string "name"
-    t.datetime "start"
-    t.datetime "end"
-    t.boolean "done"
-    t.integer "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_stages_on_task_id"
-  end
-
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "private"
+    t.string "owneremail"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -45,7 +47,8 @@ ActiveRecord::Schema.define(version: 2020_12_13_160050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "workload"
-    t.string "title"
+    t.datetime "duedate"
+    t.string "name"
     t.index ["subject_id"], name: "index_tasks_on_subject_id"
   end
 

@@ -1,42 +1,31 @@
-<%= form_with(model: task, local: true) do |form| %>
-  <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<%= simple_form_for([@subject, @task]) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+  <h3>Events</h3>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class='events'>
+      <%= f.simple_fields_for :events do |event| %>
+        <%= render 'event_fields', f: event %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </tbody>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  </table>
 
-  <div class="field">
-    <%= form.label :duedate %>
-    <%= form.date_select :duedate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :workload %>
-    <%= form.number_field :workload %>
-  </div>
-
-  <div class="field">
-    <%= form.label :subject_id %>
-    <%= form.text_field :subject_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to_add_association 'Add Event', f, :events, class: 'btn btn-primary', data: { association_insertion_node: '.events', association_insertion_method: :append } %>
   </div>
 <% end %>

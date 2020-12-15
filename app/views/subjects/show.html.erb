@@ -10,5 +10,16 @@
   <%= @subject.description %>
 </p>
 
+<h2>Tasks</h2>
+<% for task in @subject.tasks %>
+    <ul>
+      <li><%= task.name %></li>
+      <li><%= task.duedate %></li>
+      <li><%= task.workload %></li>
+      <li><%= link_to 'Show Task', subject_task_path(@subject, task) %></li>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Add/Edit Post', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>

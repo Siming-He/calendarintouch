@@ -18,3 +18,9 @@
 //= require bootstrap-sprockets
 //= require cocoon
 //= require_tree .
+//= require moment 
+//= require fullcalendar
+
+$('#calendar').fullCalendar({ 
+  events: '/events.json'
+});

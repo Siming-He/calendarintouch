@@ -1,7 +1,7 @@
+<script src="https://kit.fontawesome.com/1d9373cc66.js" crossorigin="anonymous"></script>
+
 <p id="notice"><%= notice %></p>
-
 <h1>Subjects</h1>
-
 <table>
   <thead>
     <tr>
@@ -13,13 +13,39 @@
 
   <tbody>
     <% @subjects.each do |subject| %>
-      <tr>
-        <td><%= subject.name %></td>
-        <td><%= subject.description %></td>
-        <td><%= link_to 'Show', subject %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if current_user.email != subject.owneremail && !subject.private %>
+        <% if subject.get_users.include?(current_user) %>
+          <tr>
+            <td><%= subject.name %></td>
+            <td><%= subject.description %></td>
+            <td><%= link_to 'Show', subject %></td>
+            <td>
+              <a href="/drop_subject/<%= current_user.id %>/<%= subject.id %>">
+                  <button type="button" class="btn btn-outline-secondary"><i class="far fa-plus-square"></i> Drop</button>
+              </a>
+            </td>
+          </tr>
+        <% else %>
+          <tr>
+            <td><%= subject.name %></td>
+            <td><%= subject.description %></td>
+            <td><%= link_to 'Show', subject %></td>
+            <td>
+              <a href="/add_subject/<%= current_user.id %>/<%= subject.id %>">
+                  <button type="button" class="btn btn-outline-secondary"><i class="far fa-plus-square"></i> Add</button>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      <% elsif current_user.email == subject.owneremail %>  
+        <tr>
+            <td><%= subject.name %></td>
+            <td><%= subject.description %></td>
+            <td><%= link_to 'Show', subject %></td>
+            <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
+            <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
