@@ -10,6 +10,11 @@
   <%= @subject.description %>
 </p>
 
+<p>
+  <strong>Syllabus:</strong>
+  <embed src="<%=url_for(@subject.syllabus)%>" width="600px" height="780px" />
+</p>
+
 <h2>Tasks</h2>
 <% for task in @subject.tasks %>
     <ul>

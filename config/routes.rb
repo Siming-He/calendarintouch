@@ -16,10 +16,6 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  resources :tasks do
-    resources :events
-  end
-
   get 'add_subject/:user_id/:subject_id', to: 'registration#add_subject'
   get 'drop_subject/:user_id/:subject_id', to: 'registration#drop_subject'
 

@@ -13,6 +13,7 @@ gem 'cocoon'
 gem 'simple_form'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'aws-sdk-s3'
 
 # gem 'omniauth-google-oauth2'
 # gem 'google-api-client', require: 'google/apis/calendar_v3'

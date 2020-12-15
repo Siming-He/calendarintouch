@@ -75,6 +75,6 @@ class SubjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subject_params
-      params.require(:subject).permit(:name, :description, :private, tasks_attributes: Task.attribute_names.map(&:to_sym).push(:_destroy))
+      params.require(:subject).permit(:name, :description, :syllabus,:private, tasks_attributes: Task.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end

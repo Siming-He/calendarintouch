@@ -20,6 +20,16 @@
   <%= @task.subject %>
 </p>
 
+<h2>Events</h2>
+<% for event in Event.where(task_id: @task.id) %>
+    <ul>
+      <li><%= event.title %></li>
+      <li><%= event.start %></li>
+      <li><%= event.end %></li>
+      <li><%= link_to 'Show Event', event %></li>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_subject_task_path(@subject, @task) %> |
 <%= link_to 'Back', subject_path(@subject) %>
 
