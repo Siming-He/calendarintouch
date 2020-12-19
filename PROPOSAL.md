@@ -37,6 +37,6 @@ This project ScheduleInTouch aims at developing a website that makes task schedu
 * Dec 7 – Dec 14	Implement Google Calendar API, Prettify the project
 
 # Extra:
-- Allows both public and private subject
+- Allows both public and private events
 - Implement two nested forms
 
