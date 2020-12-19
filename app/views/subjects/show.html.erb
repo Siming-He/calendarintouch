@@ -12,7 +12,9 @@
 
 <p>
   <strong>Syllabus:</strong>
-  <embed src="<%=url_for(@subject.syllabus)%>" width="600px" height="780px" />
+  <% if @subject.syllabus.attached? %>
+    <embed src="<%=url_for(@subject.syllabus)%>" width="600px" height="780px" />
+  <% end %>
 </p>
 
 <h2>Tasks</h2>

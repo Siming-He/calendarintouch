@@ -1,3 +1,4 @@
+# require pry;
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -9,7 +10,16 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(start: params[:start]..params[:end])
+    subjectarr = Registration.where(user_id: current_user.id).to_a
+    eventarr = []
+    subjectarr.each do |s|
+      taskarr = Subject.find_by(id: s.subject_id).tasks.to_a
+      taskarr.each do |t|
+        eventarr = eventarr | t.events.to_a
+      end
+    end
+    # binding.py
+    @events = Event.where(id: eventarr.map(&:id)) # Event.where(start: params[:start]..params[:end])
   end
 
   # GET /events/1

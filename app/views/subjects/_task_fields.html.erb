@@ -2,7 +2,10 @@
   <td>
     <%= link_to_remove_association "remove", f, class: 'btn btn-primary btn-xs' %>
   </td>
-  
+  <td>
+    <% #binding.pry %> 
+    <%= link_to 'Add Events', "/subjects/#{f.object.subject_id}/tasks/#{f.object.id}/edit" %>
+  </td>
   <td><%= f.input :name, label: false %></td>
   <td><%= f.input :duedate, label: false %></td>
   <td><%= f.input :workload, label: false %></td>

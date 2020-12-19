@@ -16,7 +16,9 @@ class Subject < ApplicationRecord
   end
 
   def user_drop=(user)
-    Registration.find_by(user_id: user.id).destroy
+    if !Registration.where(user_id: user.id).find_by(subject_id: id).nil?
+      Registration.where(user_id: user.id).find_by(subject_id: id).destroy
+    end
   end
 
   def get_users
