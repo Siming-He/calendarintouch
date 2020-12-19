@@ -12,8 +12,6 @@
         <th></th>
         <th></th>
         <th></th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody class='events'>
@@ -25,7 +23,7 @@
   </table>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary', style: "margin-right: 20px;" %>
     <%= link_to_add_association 'Add Event', f, :events, class: 'btn btn-primary', data: { association_insertion_node: '.events', association_insertion_method: :append } %>
   </div>
 <% end %>

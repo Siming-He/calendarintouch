@@ -1,15 +1,65 @@
-<h1>Welcome to ScheduleInTouch!</h1>
-<p>
-  ScheduleInTouch is a website that makes task scheduling convenient and efficient. 
-  It would allow users to join or create, subjects, tasks of each subject, and events of each task.
-  The schedule will show on the calendar. 
-</p>
-<p>
-  Here is the GitLab link of this project: <a href="https://gitlab.com/Siming-He/calendarintouch">ScheduleInTouch GitLab</a>
-</p>
-<p>
-  	&#10084; Sign up and enjoy scheduling! 	&#10084;
-</p>
-<p>
-  	- Siming He
-</p>
+<% if user_signed_in? %>
+  <div class="container"> 
+    <h1><%= Time.now.strftime "%A, %d/%m/%Y" %></h1>
+    <section id="layout 1">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6" style="padding: 10px;" >
+          <div class="card text-center border-primary mb-3" style="width: 100%;">
+            <div class="card-body">
+              <h5 class="card-header">User Page</h5>
+              <p class="card-text text-primary"><br />In this page, you can change your email and password 
+                and cancel your account. <br /><br /></p>
+              <div class="btn btn-outline-primary btn-sm">
+                <%= link_to 'User', edit_user_registration_path, class: 'nav-link', :class => "btn text-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6" style="padding: 10px;" >
+          <div class="card text-center border-primary mb-3" style="width: 100%;">
+            <div class="card-body">
+              <h5 class="card-header">Subjects Page</h5>
+              <p class="card-text text-primary"><br />In this page, you can create and destroy subjects, tasks,
+                and events. You can also join others' public subjects.</p>
+              <div class="btn btn-outline-primary btn-sm">
+                <%= link_to 'Subjects', "/subjects", class: 'nav-link', :class => "btn text-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6" style="padding: 10px;" >
+          <div class="card text-center border-primary mb-3" style="width: 100%;">
+            <div class="card-body">
+              <h5 class="card-header">Calendar Page</h5>
+              <p class="card-text text-primary"><br />In this page, you see and access your events. <br /><br /></p>
+              <div class="btn btn-outline-primary btn-sm">
+                <%= link_to 'Calendar', "/calendar", class: 'nav-link', :class => "btn text-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<% else %>
+  <div class="container"> 
+    <section id="layout 1">
+      <h1>Welcome to ScheduleInTouch!</h1>
+      <p>
+        ScheduleInTouch is a website that makes task scheduling convenient and efficient. 
+        It would allow users to join or create, subjects, tasks of each subject, and events of each task.
+        The schedule will show on the calendar. 
+      </p>
+      <p>
+        Here is the GitLab link of this project: <a href="https://gitlab.com/Siming-He/calendarintouch">ScheduleInTouch GitLab</a>
+      </p>
+      <p>
+          &#10084; Sign up and enjoy scheduling! 	&#10084;
+      </p>
+      <p>
+          - Siming He
+      </p>
+    </section>
+  </div>
+<% end %>

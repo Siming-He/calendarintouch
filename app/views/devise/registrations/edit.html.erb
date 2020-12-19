@@ -23,17 +23,17 @@
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
     </div>
-    <a href="<%= :submit %>">
-    <button type="button" class="btn btn-outline-dark btn-md">Update</button>
-    </a>
+    <div class="btn btn-outline-primary btn-sm">
+      <div class="form-actions">
+        <%= f.button :submit, "Update", :class => "text-primary" %>
+      </div>
+    </div>
   <% end %>
   <br />
-  <a href="<%= :back %>">
-    <button type="button" class="btn btn-outline-dark btn-md">Back</button>
-  </a>
-  <br />
-  <br />
-  <div class="btn btn-outline-dark btn-sm">
-    <%= link_to 'Cancel my account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "btn" %>
+  <div class="btn btn-outline-primary btn-sm", style="margin-right: 20px;">
+    <%= link_to "Back", :back, :class => "btn text-primary" %>
+  </div>
+  <div class="btn btn-outline-primary btn-sm">
+    <%= link_to 'Cancel my account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "btn text-primary" %>
   </div>
 </div>

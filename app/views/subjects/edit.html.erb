@@ -1,6 +1,8 @@
-<h1>Editing Subject</h1>
+<div class="container">
+  <h1>Editing Subject</h1>
 
-<%= render 'form', subject: @subject %>
-
-<%= link_to 'Show', @subject %> |
-<%= link_to 'Back', subjects_path %>
+  <%= render 'form', subject: @subject %>
+  <br />
+  <%= link_to 'Back', @subject, class: 'btn btn-primary' %>
+  <br /><br /><br />
+</div>

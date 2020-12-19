@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <h1>Task Name:</h1>
   <%= @task.name %>
 </p>
 
@@ -14,23 +14,32 @@
   <strong>Description:</strong>
   <%= @task.description %>
 </p>
-
-<p>
-  <strong>Subject:</strong>
-  <%= @task.subject %>
-</p>
-
+<br />
+<div class="btn btn-outline-primary btn-sm", style="margin-right: 20px;">
+    <%= link_to 'Edit task and events', edit_subject_task_path(@subject, @task), :class => "btn text-primary" %>
+  </div> 
+  <div class="btn btn-outline-primary btn-sm">
+    <%= link_to 'Back', subject_path(@subject), :class => "btn text-primary" %>
+  </div>
+  <br /><br />
 <h2>Events</h2>
-<% for event in Event.where(task_id: @task.id) %>
-    <ul>
-      <li><%= event.title %></li>
-      <li><%= event.start %></li>
-      <li><%= event.end %></li>
-      <li><%= link_to 'Show Event', event %></li>
-  </ul>
-<% end %>
-
-<%= link_to 'Edit', edit_subject_task_path(@subject, @task) %> |
-<%= link_to 'Back', subject_path(@subject) %>
+<div class="row">
+  <% for event in Event.where(task_id: @task.id) %>
+    <div class="col-lg-4 col-sm-6" style="padding: 10px;">
+      <div class="card text-center" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-header"><%= event.title %></h5>
+          <h6 class="card-sibtitle mb-4 text-secondary">
+            <%= "Start: #{event.start}" %>
+          </h6>
+          <p class="card-text"><%= "End: #{event.end} hrs" %></p>
+          <div class="btn btn-outline-primary btn-sm">
+            <%= link_to 'Show Event', event, :class => "btn text-primary" %>
+          </div>
+        </div>
+      </div>
+      </div>
+  <% end %>
+</div>
 
 

@@ -1,32 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
+  <p>
+    <h1>Subject Name:</h1>
+    <%= @subject.name %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @subject.description %>
-</p>
-
-<p>
-  <strong>Syllabus:</strong>
-  <% if @subject.syllabus.attached? %>
-    <embed src="<%=url_for(@subject.syllabus)%>" width="600px" height="780px" />
-  <% end %>
-</p>
-
-<h2>Tasks</h2>
-<% for task in @subject.tasks %>
-    <ul>
-      <li><%= task.name %></li>
-      <li><%= task.duedate %></li>
-      <li><%= task.workload %></li>
-      <li><%= link_to 'Show Task', subject_task_path(@subject, task) %></li>
-  </ul>
-<% end %>
-
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Add/Edit Post', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+  <p>
+    <strong>Description:</strong>
+    <%= @subject.description %>
+  </p>
+  <p>
+    <strong>Syllabus:</strong>
+    <% if @subject.syllabus.attached? %>
+      <embed src="<%=url_for(@subject.syllabus)%>" width="600px" height="780px" />
+    <% end %>
+  </p>
+  <br /> 
+  <div class="btn btn-outline-primary btn-sm", style="margin-right: 20px;">
+    <%= link_to 'Edit subject and tasks', edit_subject_path(@subject), :class => "btn text-primary" %>
+  </div> 
+  <div class="btn btn-outline-primary btn-sm">
+    <%= link_to 'Back', subjects_path, :class => "btn text-primary" %>
+  </div>
+  <br /><br />
+  <h2>Tasks</h2>
+  <div class="row">
+    <% for task in @subject.tasks %>
+        <div class="col-lg-4 col-sm-6" style="padding: 10px;">
+            <div class="card text-center" style="width: 100%;">
+              <div class="card-body">
+                <h5 class="card-header"><%= task.name %></h5>
+                <h6 class="card-sibtitle mb-4 text-secondary">
+                  <%= "Duedate: #{task.duedate}" %>
+                </h6>
+                <p class="card-text"><%= "Workload: #{task.workload} hrs" %></p>
+                <div class="btn btn-outline-primary btn-sm">
+                  <%= link_to 'Show Task', subject_task_path(@subject, task), :class => "btn text-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+    <% end %>
+  </div>
+</div>
