@@ -2,25 +2,28 @@
 * Name (PennKey): siminghe
 * Project Name: ScheduleInTouch
 # Description
-This project ScheduleInTouch aims at developing a website that makes task scheduling more convenient and efficient. It would allow users to join or create calendars, tasks of the calendar, and stages/checkpoint of the task. Then, time blocks will be automatically assigned to the user’s schedule. I wish users could manage their time more clearly with less effort. I will use an example to illustrate the website. Tom has many courses and is very frustrated at managing the various tasks. Hence, he tries to create calendars for his courses. He firstly creates a public calendar for CIS 196. Followed the syllabus, he easily added tasks of CIS 196. One of the tasks is the Final Project which is due on December 20, 2020. Tom divides the Final Project into two stages. The first stage is from November 20 to December 5. In this stage, Tom would spend 40 hours to finish the backend of the project. After the creation of this stage, the calendar would assign 40 hours to time blocks throughout the period so that Tom can follow the calendar and finish all works. The time blocks are after Tom wakes up and before Tom goes to sleep. If Tom adds a stage but there is not enough time block, the calendar will warn Tom. Now, if Jerry also wants to schedule his CIS 196 course, Jerry could join the calendar and get the tasks in the calendar. Then, Jerry could create his stages for each task and generate his customized schedule. 
+This project ScheduleInTouch aims at developing a website that makes task scheduling more convenient and efficient. It would allow users to join or create subject, tasks of the calendar, and events of the task. Then, time blocks will be displayed on calendar. 
 # Database Schema
 ![DatabaseSchema](scheme.png)
 # Third Party Utilities
 * Gem(s): 
-  * bcrypt: password encryption
-  * Devise
-  * formtastic: create beautiful nested form
+  * pry: debug
+  * devise: user authentication
+  * cocoon: nested form
+  * simple_form: beautiful form
+  * fullcalendar: display calendar
+  * asw-sdk-s3: file upload
 * API(s): 
-  * Google Calendar API: calendar for scheduling
+  * None (Google Calendar API failed since I'm in China and not able to access it normally. Professor approved me to use fullcalendar gem instead of the API).
 # Success Criteria
 * Model
-  1. has_many to has_many relationships: Users and Calendars
-  2. Nested structure: Calendar and task; user and stage
-  3. Google Calendar API
+  1. has_many to has_many relationships: Users and Subjects
+  2. Nested structure: Subject and Task; Task and Event
+  3. Google Calendar API: replaced by fullcalendar gem with approvement of Professor
 * Controller
-  1. User and Password
-  2. Upload Syllabus File
-  3. Use formatatic to create beautiful nested forms for calendar, task, stage creation
+  1. User and Password: user authentication using devise gem
+  2. Upload Syllabus File: upload syllabus of each subject
+  3. Use simple_form gem to create beautiful nested forms
 * View
   1. Use Bootstrap and CSS
   2. Aesthetic
@@ -34,9 +37,6 @@ This project ScheduleInTouch aims at developing a website that makes task schedu
 * Dec 7 – Dec 14	Implement Google Calendar API, Prettify the project
 
 # Extra:
-- Use kramdown to create markdown format of text
-- Allows both public and private calendar
-- Assign time blocks based on preference and priority TODO matrix.
-- Implement Time Tracker and Analysis
-- Emailing daily /weekly task report
+- Allows both public and private subject
+- Implement two nested forms
 
