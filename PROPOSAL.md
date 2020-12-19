@@ -1,6 +1,7 @@
 # Project Proposal
 * Name (PennKey): siminghe
 * Project Name: ScheduleInTouch
+* Link: https://fathomless-retreat-40604.herokuapp.com/
 # Description
 This project ScheduleInTouch aims at developing a website that makes task scheduling more convenient and efficient. It would allow users to join or create subject, tasks of the calendar, and events of the task. Then, time blocks will be displayed on calendar. 
 # Database Schema
